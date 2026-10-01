@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefacBox | Menú</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f0e6;
+  color: #222;
+}
+
+.menu {
+  max-width: 1050px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+}
+
+header {
+  background: #c8102e;
+  padding: 28px 25px 34px;
+  text-align: center;
+  color: white;
+  border-bottom: 9px solid #ffc72c;
+}
+
+.logo {
+  width: 155px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid white;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+header h1 {
+  margin: 14px 0 4px;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.intro {
+  text-align: center;
+  padding: 22px 20px 8px;
+}
+
+.intro h2 {
+  margin: 0;
+  color: #c8102e;
+  font-size: 30px;
+}
+
+.intro p {
+  margin: 8px 0 18px;
+  color: #666;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px 25px 35px;
+}
+
+.card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,.10);
+}
+
+.card-title {
+  background: #c8102e;
+  color: white;
+  padding: 15px 18px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.card:nth-child(even) .card-title {
+  background: #ffc72c;
+  color: #222;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 18px 14px;
+}
+
+li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+li:last-child {
+  border-bottom: 0;
+}
+
+.qty {
+  display: inline-block;
+  min-width: 34px;
+  margin-right: 8px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: #ffc72c;
+  color: #222;
+  font-weight: 900;
+  text-align: center;
+}
+
+.total {
+  margin: 0 18px 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f7f7f7;
+  text-align: center;
+  font-weight: 900;
+  color: #c8102e;
+}
+
+.kits {
+  grid-column: 1 / -1;
+}
+
+.product-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-btn {
+  border: 0;
+  background: #c8102e;
+  color: #fff;
+  border-radius: 9px;
+  padding: 8px 12px;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.card:nth-child(even) .add-btn {
+  background: #222;
+  color: #ffc72c;
+}
+
+.buy-area {
+  padding: 0 25px 35px;
+}
+
+.cart-box {
+  background: #222;
+  color: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  position: sticky;
+  bottom: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
+
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.cart-head h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.cart-items {
+  max-height: 190px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid #444;
+  font-size: 14px;
+}
+
+.cart-item button {
+  border: 0;
+  border-radius: 7px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 21px;
+  font-weight: 900;
+  padding-top: 10px;
+}
+
+.buy-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #ffc72c;
+  color: #222;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.whatsapp-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 10px;
+  background: #25D366;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.checkout {
+  display: none;
+  margin-top: 18px;
+  background: #fff;
+  color: #222;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.checkout.show {
+  display: block;
+}
+
+.checkout h3 {
+  margin-top: 0;
+  color: #c8102e;
+}
+
+.checkout input,
+.checkout select,
+.checkout textarea {
+  width: 100%;
+  padding: 11px;
+  margin: 6px 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.checkout small {
+  color: #666;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #c8102e;
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kits {
+    grid-column: auto;
+  }
+
+  header h1 {
+    font-size: 34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+
+<header>
+
+<!-- AQUÍ PUEDES PONER TU LOGO -->
+<img class="logo" src="logo.png" alt="Logo RefacBox">
+
+<h1>REFACBOX</h1>
+
+<p>SNACKS DELICIOSOS Y DIVERTIDOS</p>
+
+</header>
+
+
+<section class="intro">
+
+<h2>MENÚ</h2>
+
+<p>
+Elige un kit armado o compra los productos por separado
+</p>
+
+</section>
+
+
+<main class="grid">
+
+
+<!-- ========================= -->
+<!-- KITS ARMADOS -->
+<!-- ========================= -->
+
+<section class="card kits">
+
+<div class="card-title">
+⭐ KITS ARMADOS
+</div>
+
+<ul>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+
+<b>💪 Kit Gym</b>
+
+<br>
+
+<small>
+Agua + jugo Del Frutal +
+galletas integrales + maní Inca
+</small>
+
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Kit Gym', 30)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+
+<b>🌙 Kit Desvelado</b>
+
+<br>
+
+<small>
+Raptor/Monster + café Nescafé 3 en 1 +
+Chiky + chocolate Bubu Lubu
+</small>
+
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Kit Desvelado', 30)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+
+<b>🍫 Kit Antojo</b>
+
+<br>
+
+<small>
+Gaseosa + Tortrix + Chiky +
+chocolate Bubu Lubu + caramelos Chao
+</small>
+
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Kit Antojo', 30)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+
+<b>😋 Kit Snack Clásico</b>
+
+<br>
+
+<small>
+Agua + Tortrix + maní Inca +
+galletas Tosh + chicles Canel's
+</small>
+
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Kit Snack Clásico', 30)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+4 kits armados disponibles
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- PRODUCTOS INDIVIDUALES -->
+<!-- ========================= -->
+
+<section class="card kits">
+
+<div class="card-title">
+🛍️ PRODUCTOS INDIVIDUALES
+</div>
+
+<div class="total">
+Compra solo lo que quieras
+</div>
+
+</section>
+
+
+<!-- BEBIDAS -->
+
+<section class="card">
+
+<div class="card-title">
+🥤 Bebidas Energéticas y Refrescos
+</div>
+
+<ul>
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Latas de Raptor o Monster (500 ml)
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Raptor o Monster 500ml', 17)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Latas de Mirinda, Grapette o Tiki (355 ml)
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Mirinda, Grapette o Tiki', 10)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+Total: 4 unidades
+</div>
+
+</section>
+
+
+<!-- BEBIDAS SALUDABLES -->
+
+<section class="card">
+
+<div class="card-title">
+☕ Bebidas Saludables y Café
+</div>
+
+<ul>
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Agua pura Salvavidas (600 ml)
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Agua Salvavidas 600ml', 7)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Jugo Del Frutal
+(Manzana o Melocotón)
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Jugo Del Frutal', 6)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Café Nescafé 3 en 1
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Nescafé 3 en 1', 10)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+Total: 6 unidades
+</div>
+
+</section>
+
+
+<!-- SNACKS -->
+
+<section class="card">
+
+<div class="card-title">
+🍿 Snacks Salados
+</div>
+
+<ul>
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Tortrix Barbacoa o Limón
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Tortrix', 2)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Maní Inca salado o mixto
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Maní Inca', 5)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Chicharrones Señorial o palitos Pochis
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Chicharrones Señorial o Pochis', 5)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+Total: 6 unidades
+</div>
+
+</section>
+
+
+<!-- GALLETAS -->
+
+<section class="card">
+
+<div class="card-title">
+🍪 Galletas y Barras
+</div>
+
+<ul>
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Galletas Chiky
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Galletas Chiky', 4)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Barra Gran Día o galletas Tosh
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Gran Día o Tosh', 7)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Galletas integrales Pozuelo
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Galletas Pozuelo', 4)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Galletas Gama
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Galletas Gama', 4)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+Total: 8 unidades
+</div>
+
+</section>
+
+
+<!-- DULCES -->
+
+<section class="card kits">
+
+<div class="card-title">
+🍫 Dulces y Golosinas
+</div>
+
+<ul>
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Bubu Lubu
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Bubu Lubu', 3)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">4</span>
+Caramelos ácidos Chao
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Caramelos Chao', 3)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Pastillas Halls
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Halls', 5)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">2</span>
+Chicles Clorets
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Clorets', 2)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+
+<li>
+
+<div class="product-row">
+
+<div>
+<span class="qty">4</span>
+Chicles Canel's
+</div>
+
+<button
+class="add-btn"
+onclick="addProduct('Canel’s', 1)"
+>
+Agregar
+</button>
+
+</div>
+
+</li>
+
+</ul>
+
+<div class="total">
+Total: 14 unidades
+</div>
+
+</section>
+
+</main>
+
+
+<!-- ========================= -->
+<!-- CARRITO -->
+<!-- ========================= -->
+
+<section class="buy-area">
+
+<div class="cart-box">
+
+<div class="cart-head">
+
+<h2>
+🛒 Tu pedido
+</h2>
+
+<span id="cartCount">
+0 productos
+</span>
+
+</div>
+
+
+<div id="cartItems" class="cart-items">
+
+<div>
+Agrega productos al carrito para comenzar.
+</div>
+
+</div>
+
+
+<div class="price-line">
+
+<span>
+Total
+</span>
+
+<span id="cartTotal">
+Q0.00
+</span>
+
+</div>
+
+
+<button
+class="buy-btn"
+onclick="openCheckout()"
+>
+🛒 Comprar ahora
+</button>
+
+
+<a
+class="whatsapp-btn"
+href="https://wa.me/50241221225"
+target="_blank"
+rel="noopener"
+>
+💬 Servicio al cliente por WhatsApp
+</a>
+
+
+<div id="checkout" class="checkout">
+
+<h3>
+Finalizar pedido por WhatsApp
+</h3>
+
+
+<label>
+Nombre
+</label>
+
+<input
+id="customerName"
+type="text"
+placeholder="Tu nombre"
+>
+
+
+<label>
+Teléfono
+</label>
+
+<input
+id="customerPhone"
+type="tel"
+placeholder="Tu número"
+>
+
+
+<label>
+Dirección de entrega
+</label>
+
+<textarea
+id="customerAddress"
+rows="3"
+placeholder="Dirección para entregar el pedido"
+></textarea>
+
+
+<label>
+Método de pago
+</label>
+
+<select id="paymentMethod">
+
+<option value="efectivo">
+Efectivo contra entrega
+</option>
+
+<option value="transferencia">
+Transferencia bancaria
+</option>
+
+</select>
+
+
+<small>
+Al confirmar, se abrirá WhatsApp con tu pedido listo para enviarlo al servicio al cliente.
+</small>
+
+
+<button
+class="pay-btn"
+onclick="placeOrder()"
+>
+💬 Pedir por WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+REFACBOX • ¡SNACKS DELICIOSOS Y DIVERTIDOS!
+
+</footer>
+
+</div>
+
+
+<script>
+
+const cart = [];
+
+
+function addProduct(name, price) {
+
+const existing =
+cart.find(p => p.name === name);
+
+if (existing) {
+
+existing.qty++;
+
+} else {
+
+cart.push({
+
+name: name,
+
+price: price,
+
+qty: 1
+
+});
+
+}
+
+renderCart();
+
+}
+
+
+function removeProduct(name) {
+
+const index =
+cart.findIndex(p => p.name === name);
+
+if (index === -1) return;
+
+cart[index].qty--;
+
+if (cart[index].qty <= 0) {
+
+cart.splice(index, 1);
+
+}
+
+renderCart();
+
+}
+
+
+function renderCart() {
+
+const box =
+document.getElementById('cartItems');
+
+const count =
+cart.reduce(
+(sum, p) => sum + p.qty,
+0
+);
+
+const total =
+cart.reduce(
+(sum, p) => sum + p.price * p.qty,
+0
+);
+
+
+document.getElementById('cartCount').textContent =
+
+count +
+(count === 1
+? ' producto'
+: ' productos');
+
+
+document.getElementById('cartTotal').textContent =
+
+'Q' +
+total.toFixed(2);
+
+
+if (!cart.length) {
+
+box.innerHTML =
+'<div>Agrega productos al carrito para comenzar.</div>';
+
+return;
+
+}
+
+
+box.innerHTML = cart.map(p => `
+
+<div class="cart-item">
+
+<span>
+${p.qty} × ${p.name}
+</span>
+
+<span>
+
+Q${(p.price * p.qty).toFixed(2)}
+
+<button
+onclick="removeProduct('${p.name.replace(/'/g, "\\'")}')"
+>
+−
+</button>
+
+</span>
+
+</div>
+
+`).join('');
+
+}
+
+
+function openCheckout() {
+
+if (!cart.length) {
+
+alert(
+'Agrega al menos un producto al carrito.'
+);
+
+return;
+
+}
+
+
+document
+.getElementById('checkout')
+.classList.add('show');
+
+
+document
+.getElementById('checkout')
+.scrollIntoView({
+
+behavior: 'smooth',
+
+block: 'center'
+
+});
+
+}
+
+
+function placeOrder() {
+
+if (!cart.length) {
+
+alert(
+'Agrega al menos un producto al carrito.'
+);
+
+return;
+
+}
+
+
+const name =
+document
+.getElementById('customerName')
+.value
+.trim();
+
+
+const phone =
+document
+.getElementById('customerPhone')
+.value
+.trim();
+
+
+const address =
+document
+.getElementById('customerAddress')
+.value
+.trim();
+
+
+const payment =
+document
+.getElementById('paymentMethod')
+.value;
+
+
+if (!name || !phone || !address) {
+
+alert(
+'Completa nombre, teléfono y dirección.'
+);
+
+return;
+
+}
+
+
+const total =
+cart.reduce(
+(sum, p) =>
+sum + p.price * p.qty,
+0
+);
+
+
+let message =
+'¡Hola RefacBox! 👋 Quiero hacer este pedido:%0A%0A';
+
+
+message +=
+'👤 Nombre: ' +
+encodeURIComponent(name) +
+'%0A';
+
+
+message +=
+'📱 Teléfono: ' +
+encodeURIComponent(phone) +
+'%0A';
+
+
+message +=
+'📍 Dirección: ' +
+encodeURIComponent(address) +
+'%0A';
+
+
+message +=
+'💳 Método de pago: ' +
+encodeURIComponent(payment) +
+'%0A%0A';
+
+
+message +=
+'🛒 PEDIDO:%0A';
+
+
+cart.forEach(p => {
+
+message +=
+
+'• ' +
+p.qty +
+' x ' +
+encodeURIComponent(p.name) +
+' — Q' +
+(p.price * p.qty).toFixed(2) +
+'%0A';
+
+});
+
+
+message +=
+'%0A💰 Total: Q' +
+total.toFixed(2);
+
+
+window.open(
+
+'https://wa.me/50241221225?text=' +
+message,
+
+'_blank'
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
